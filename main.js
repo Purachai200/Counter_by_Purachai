@@ -3,33 +3,7 @@ btn.addEventListener("click", btnSum);
 const ctn = document.querySelector(".container");
 
 let sum = 0;
-function plusSumAll() {
-    const allCount = document.querySelectorAll('.numberText');
-    allCount.forEach((element) => {
-        const countString = element.textContent;
-        const number = parseInt(countString.match(/\d+/)[0]);
-        console.log(number)
-            sum += number;
-    });
-    const sumCount = document.querySelector('.sumCount');
-    sumCount.innerText = `SUM COUNT : ${sum}`;
-    console.log(allCount);
-    console.log(sum);
-}
-function minusSumAll() {
-    const allCount = document.querySelectorAll('.numberText');
 
-    allCount.forEach((element) => {
-        const countString = element.textContent;
-        const number = parseInt(countString.match(/\d+/)[0]);
-        console.log(number)
-            sum -= number;
-    });
-    const sumCount = document.querySelector('.sumCount');
-    sumCount.innerText = `SUM COUNT : ${sum}`;
-    console.log(allCount);
-    console.log(sum);
-}
 function checkSumAll() {
     const allCount = document.querySelectorAll('.numberText');
     let sum = 0;
@@ -41,7 +15,7 @@ function checkSumAll() {
     });
 
     const sumCount = document.querySelector('.sumCount');
-    sumCount.innerText = `SUM COUNT : ${sum}`;
+    sumCount.innerText = `SUM COUNT :  ${Math.abs(sum)}`;
 
     console.log(allCount);
     console.log(sum);
@@ -109,7 +83,7 @@ function btnSum() {
     } else {
       alert("มีบางอย่างไม่ถูกต้อง");
     }
-    plusSumAll();
+    checkSumAll();
   };
 
   function setZero() {
@@ -131,12 +105,19 @@ function btnSum() {
     } else {
       alert("มีบางอย่างไม่ถูกต้อง");
     }
-    minusSumAll();
+    checkSumAll();
   };
 
   function deleteDiv() {
-    divItem.remove();
+    let oldNumb = +cs;
+    if (!isNaN(oldNumb)) {
+      newNum = newNum - newNum;
+      counterNum.nodeValue = newNum;
+    } else {
+      alert("มีบางอย่างไม่ถูกต้อง");
+    }
     checkSumAll();
+    divItem.remove();
   }
 
   function sendStep(){
